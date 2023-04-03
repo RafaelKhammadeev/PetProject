@@ -68,7 +68,7 @@ group :development do
   gem 'web-console'
 
   # for get letter in browser
-  gem 'letter_opener', '~> 1.8'
+  gem 'letter_opener'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
