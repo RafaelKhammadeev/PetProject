@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
@@ -55,6 +53,6 @@ class UsersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def user_params
-    params.fetch(:user, {})
+    params.fetch(:user, {}).permit(:name, :age)
   end
 end
