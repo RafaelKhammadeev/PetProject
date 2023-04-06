@@ -1,0 +1,36 @@
+name: CI/CD
+on: [push, pull_request]
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:11
+        ports: [ "5432:5432" ]
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
+        ports: [ "6379:6379" ]
+        options: --entrypoint redis-server
+
+    steps:
+      - name: Run quality checks
+        run: |
+          bin/quality
+
+      - name: Setup db
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          bin/rails db:create db:schema:load
+
+      - name: Run rspec
+        run: bin/rspec
