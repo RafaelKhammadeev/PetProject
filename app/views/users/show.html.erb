@@ -2,7 +2,7 @@
 
 <%= render @user %>
 
-<% if current_user == @user %>
+<% if @user == current_user %>
   <%= link_to "Refresh Credentials", edit_user_registration_path %>
   <%= button_to "My Posts", "#" %>
   <%= button_to "Deactivate Account", "#", method: :delete %>
