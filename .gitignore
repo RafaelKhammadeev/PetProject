@@ -85,3 +85,5 @@ tmux*
 app/javascript/stylesheets/tw_configs/brand1Kinds.js
 /config/*.local.yml
 /config/credentials/local.*
+/app/assets/builds/*
+!/app/assets/builds/.keep
