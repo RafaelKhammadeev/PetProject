@@ -9,13 +9,11 @@
     <h5 class="card-title">Surname</h5>
     <p class="card-text"><%= @user.surname %></p>
   </div>
+
+  <%= link_to "Posts", user_posts_path(@user) %>
+
+  <% if current_user == @user %>
+    <%= link_to "Refresh Credentials", edit_user_registration_path %>
+    <%= button_to "Deactivate Account", user_path(@user), method: :delete %>
+  <% end %>
 </div>
-
-<% if current_user == @user %>
-  <%= link_to "Refresh Credentials", edit_user_registration_path %>
-  <%= link_to "My Posts", user_posts_path(@user) %>
-  <%= link_to "Deactivate Account", "#", method: :delete %>
-
-<% else %>
-  <%= render 'posts/post' %>
-<% end %>

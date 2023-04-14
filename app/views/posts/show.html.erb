@@ -3,7 +3,10 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><%= @post.title %></h5>
-    <p class="card-text"><%= @post.text %></p>
+    <p class="card-text"><%= @post.description %></p>
+
+    <h5 class="card-title">Status</h5>
+    <p class="card-text"><%= @post.status %></p>
 
     <div>
       <%= link_to "Edit this post", edit_user_post_path(@user, @post) %> |

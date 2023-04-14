@@ -1,5 +1,9 @@
 class Post < ApplicationRecord
+  extend Enumerize
+
   belongs_to :user
 
-  validates :title, :text, presence: true
+  enumerize :status, in: %w[Draft Public]
+
+  validates :title, presence: true
 end

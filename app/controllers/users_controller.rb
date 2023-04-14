@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show]
+  before_action :set_user, only: %i[show destroy]
 
   # GET /users or /users.json
   def index
@@ -8,6 +8,11 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to root_path, notice: 'User was successfully destroyed.'
   end
 
   private
