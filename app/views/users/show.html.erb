@@ -2,13 +2,29 @@
 
 <%= link_to "Back", root_path %>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Name</h5>
-    <p class="card-text"><%= @user.name %></p>
-    <h5 class="card-title">Surname</h5>
-    <p class="card-text"><%= @user.surname %></p>
+<% if @user == current_user %>
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Name</h5>
+      <p class="card-text"><%= @user.name %></p>
+      <h5 class="card-title">Surname</h5>
+      <p class="card-text"><%= @user.email %></p>
+      <h5 class="card-title">Email</h5>
+      <p class="card-text"><%= @user.surname %></p>
+
+      <%= link_to "Refresh Credentials", edit_user_registration_path %>
+      <%= button_to "My Posts", "#" %>
+      <%= button_to "Deactivate Account", "#", method: :delete %>
+    </div>
   </div>
+<% else %>
+  <%= render 'posts/post' %>
+<% end %>
+
+<div>
+  <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <%= link_to "Back to users", users_path %>
 
   <%= link_to "Posts", user_posts_path(@user) %>
 

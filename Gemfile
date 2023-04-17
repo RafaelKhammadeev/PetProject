@@ -55,6 +55,12 @@ gem 'devise'
 # connect with postgre
 gem 'pg'
 
+# for connect bootstrap
+gem "cssbundling-rails"
+
+# for connect js
+gem "jsbundling-rails"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
