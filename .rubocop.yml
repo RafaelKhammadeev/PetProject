@@ -9,6 +9,7 @@ require:
 AllCops:
   NewCops: enable
   Exclude:
+    - bin/**/*
     - db/**/*
 
 Rails/I18nLocaleTexts:
