@@ -1,10 +1,13 @@
 name: CI/CD
-on: push
-
-
+on: [pull_request]
 jobs:
-  build:
+  ci:
     runs-on: ubuntu-latest
+
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432
+      RAILS_ENV: test
+
     services:
       db:
         image: postgres
@@ -19,6 +22,13 @@ jobs:
           --health-retries 5
 
     steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          
       - name: Run rubocop
         run: |
           bin/rubocop
