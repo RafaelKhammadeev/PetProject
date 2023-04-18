@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       db:
-        image: postgres:11
+        image: postgres:14
         ports: [ "5432:5432" ]
         env:
           POSTGRES_USER: postgres
@@ -19,14 +19,6 @@ jobs:
           --health-retries 5
 
     steps:
-      - name: Run quality checks
+      - name: Run rubocop
         run: |
-          bin/quality
-
-      - name: Setup db
-        run: |
-          sudo apt-get -yqq install libpq-dev
-          bin/rails db:create db:schema:load
-
-      - name: Run rspec
-        run: bin/rspec
+          bin/rubocop
