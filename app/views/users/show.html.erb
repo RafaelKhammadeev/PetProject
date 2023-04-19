@@ -18,12 +18,9 @@
       <%= button_to "Deactivate Account", "#", method: :delete %>
     </div>
   </div>
-<% else %>
-  <%= render 'posts/post' %>
 <% end %>
 
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %>
 
   <%= link_to "Posts", user_posts_path(@user) %>

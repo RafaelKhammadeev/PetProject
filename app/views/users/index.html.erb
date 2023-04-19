@@ -5,7 +5,6 @@
 <table class="table">
   <tbody>
   <% @users.each do |user| %>
-    <% next if user == current_user %>
     <tr>
       <td><%= link_to "#{user.name} #{user.surname}", user_path(user) %></td>
       <td><%= user.email %></td>
