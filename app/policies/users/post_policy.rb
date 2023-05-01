@@ -1,6 +1,5 @@
 module Users
   class PostPolicy < ApplicationPolicy
-
     authorize :user, allow_nil: true
 
     def index?
