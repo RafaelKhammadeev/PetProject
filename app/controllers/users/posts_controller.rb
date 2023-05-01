@@ -1,10 +1,10 @@
 module Users
   class PostsController < ApplicationController
-    before_action :set_user, except: :index
+    before_action :set_user
     before_action :set_post, only: %i[show edit update destroy]
 
     def index
-      @posts = authorized_scope(Post, type: :relation)
+      @posts = @user.posts
     end
 
     def show
@@ -20,7 +20,7 @@ module Users
     def create
       @post = @user.posts.new(post_params)
       if @post.save
-        redirect_to user_post_path(@user, @post), success: 'post was successfully created.'
+        redirect_to user_users_post_path(@user, @post), success: 'post was successfully created.'
       else
         render :new, status: :unprocessable_entity
       end
@@ -28,7 +28,7 @@ module Users
 
     def update
       if @post.update(post_params)
-        redirect_to user_post_path(@user, @post), success: 'post was successfully updated.'
+        redirect_to user_users_post_path(@user, @post), success: 'post was successfully updated.'
       else
         render :edit, status: :unprocessable_entity
       end
