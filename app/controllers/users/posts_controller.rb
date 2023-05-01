@@ -2,6 +2,8 @@ module Users
   class PostsController < ApplicationController
     before_action :set_user
     before_action :set_post, only: %i[show edit update destroy]
+    before_action -> { authorize! Post }, only: %i[index show new create]
+    before_action -> { authorize! @post }, only: %i[edit update destroy]
 
     def index
       @posts = @user.posts
