@@ -1,6 +1,6 @@
-<h1>Posts</h1>
+<h1>My Posts</h1>
 <% if current_user.present? %>
-    <%= link_to "New post", new_user_users_post_path(current_user) %>
+    <%= link_to "New post", new_user_post_path(current_user) %>
 <% end %>
 
 <div id="posts">
@@ -16,7 +16,7 @@
       <% @posts.each do |post| %>
         <tr>
           <th scope="row"><%= post.id %></th>
-          <td><%= link_to post.title, user_users_post_path(post.user_id, post) %></td>
+          <td><%= link_to post.title, user_post_path(post.user_id, post) %></td>
           <td><%= post.description %></td>
           <td><%= post.status %></td>
         </tr>

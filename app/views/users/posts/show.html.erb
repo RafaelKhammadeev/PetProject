@@ -10,9 +10,9 @@
       <% if current_user.nil? %>
         <%= link_to "Back to posts", posts_path %>
       <% else %>
-          <%= link_to "Edit this post", edit_user_users_post_path(@user, @post) %> |
-          <%= link_to "Back to posts", user_users_posts_path(@user) %>
-          <%= button_to "Destroy this post", user_users_post_path(@user, @post), method: :delete %>
+          <%= link_to "Edit this post", edit_user_post_path(@user, @post) %> |
+          <%= link_to "Back to posts", user_posts_path(@user) %>
+          <%= button_to "Destroy this post", user_post_path(@user, @post), method: :delete %>
       <% end %>
     </div>
   </div>
