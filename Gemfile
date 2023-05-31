@@ -35,7 +35,7 @@ gem 'redis', '~> 4.0'
 gem 'enumerize'
 
 # for get policy
-gem "action_policy"
+gem 'action_policy'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -59,10 +59,10 @@ gem 'devise'
 gem 'pg'
 
 # for connect bootstrap
-gem "cssbundling-rails"
+gem 'cssbundling-rails'
 
 # for connect js
-gem "jsbundling-rails"
+gem 'jsbundling-rails'
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -72,10 +72,10 @@ gem "jsbundling-rails"
 
 group :development, :test do
   gem 'rubocop', require: false
-  gem "rubocop-performance", require: false
-  gem "rubocop-rails", require: false
-  gem "rubocop-rake", require: false
-  gem "rubocop-thread_safety", require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
+  gem 'rubocop-thread_safety', require: false
 end
 
 group :development do
