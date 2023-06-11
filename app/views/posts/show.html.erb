@@ -6,9 +6,13 @@
     <h5 class="card-title">Status</h5>
     <p class="card-text"><%= @post.status %></p>
 
+    <h5 class="card-title">Status</h5>
+    <p class="card-text"><%= @post.status %></p>
+
     <div>
-      <% if current_user.nil? %>
-        <%= link_to "Back to posts", posts_path %>
+
+      <% if current_user != @post.user %>
+        <%= link_to "Back to posts", main_path %>
       <% else %>
           <%= link_to "Edit this post", edit_user_post_path(@user, @post) %> |
           <%= link_to "Back to posts", user_posts_path(@user) %>
