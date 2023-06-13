@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_user
   before_action :set_post, only: %i[show edit update destroy]
-  # todo создать отедельно index main для index posts
+  # TODO: создать отедельно index main для index posts
   before_action :authenticate_user!, only: %i[new update show index]
   before_action -> { authorize! @post }, only: %i[edit update destroy]
 

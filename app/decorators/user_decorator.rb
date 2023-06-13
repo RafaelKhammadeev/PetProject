@@ -2,6 +2,6 @@ class UserDecorator < Draper::Decorator
   delegate_all
 
   def full_name
-      "#{ name } #{ surname }"
+    "#{name} #{surname}"
   end
 end
