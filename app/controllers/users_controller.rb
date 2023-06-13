@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
+  decorates_assigned :users
   before_action :set_user, only: %i[show destroy]
 
   # GET /users or /users.json
   def index
-    @users = User.where.not(id: current_user)
+    @users = User.all.excluding(current_user)
   end
 
   # GET /users/1 or /users/1.json
@@ -25,9 +26,5 @@ class UsersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name, :surname)
-  end
-
-  def full_name
-    "#{user.name} #{user.surname}"
   end
 end
