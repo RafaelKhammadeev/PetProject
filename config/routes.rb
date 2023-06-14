@@ -1,13 +1,10 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   root to: 'users#index'
   devise_for :users
 
-  resources :posts
-  resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get 'main/', to: 'main_page#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :users, only: %i[index show destroy] do
+    resources :posts
+  end
 end

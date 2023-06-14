@@ -1,30 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<%= link_to "Back", root_path %>
 
-<%= render @user %>
+<div class="card weight">
+  <div class="card-body">
+    <h5 class="card-title">Name</h5>
+    <p class="card-text"><%= @user.name %></p>
+    <h5 class="card-title">Surname</h5>
+    <p class="card-text"><%= @user.surname %></p>
+    <h5 class="card-title">Email</h5>
+    <p class="card-text"><%= @user.email %></p>
 
-<% if @user == current_user %>
+    <div>
+      <%= link_to "Posts", user_posts_path(@user) %>
 
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Name</h5>
-      <p class="card-text"><%= @user.name %></p>
-      <h5 class="card-title">Surname</h5>
-      <p class="card-text"><%= @user.email %></p>
-      <h5 class="card-title">Email</h5>
-      <p class="card-text"><%= @user.surname %></p>
-
-      <%= link_to "Refresh Credentials", edit_user_registration_path %>
-      <%= button_to "My Posts", "#" %>
-      <%= button_to "Deactivate Account", "#", method: :delete %>
+      <% if current_user == @user %>
+        <%= link_to "Refresh Credentials", edit_user_registration_path %>
+        <%= button_to "Deactivate Account", user_path(@user), method: :delete %>
+      <% end %>
     </div>
   </div>
-<% else %>
-  <%= render 'posts/post' %>
-<% end %>
-
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
 </div>

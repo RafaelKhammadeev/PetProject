@@ -32,6 +32,11 @@ gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 
+gem 'enumerize'
+
+# for get policy
+gem 'action_policy'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -54,19 +59,26 @@ gem 'devise'
 gem 'pg'
 
 # for connect bootstrap
-gem "cssbundling-rails"
+gem 'cssbundling-rails'
 
 # for connect js
-gem "jsbundling-rails"
+gem 'jsbundling-rails'
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem 'sassc-rails'
+
+# Decorator use for view
+gem 'draper'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
   gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rake', require: false
+  gem 'rubocop-thread_safety', require: false
 end
 
 group :development do
@@ -86,6 +98,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'rspec'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end

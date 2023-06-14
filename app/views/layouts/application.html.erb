@@ -15,9 +15,17 @@
   </header>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% flash.each do |type, msg| %>
+      <div class="alert alert-<%= type %>">
+        <%= msg %>
+      </div>
+    <% end %>
 
-    <%= yield %>
+
+  <%= yield %>
   </body>
+
+  <footer class="bg-light text-center text-lg-start">
+    <%= render 'application/footer' %>
+  </footer>
 </html>

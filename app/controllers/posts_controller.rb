@@ -1,56 +1,57 @@
 class PostsController < ApplicationController
+  before_action :set_user
   before_action :set_post, only: %i[show edit update destroy]
+  # TODO: создать отедельно index main для index posts
+  before_action :authenticate_user!, only: %i[new update show index]
+  before_action -> { authorize! @post }, only: %i[edit update destroy]
 
-  # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = @user.posts
   end
 
-  # GET /posts/1 or /posts/1.json
-  def show; end
+  def show
+  end
 
-  # GET /posts/new
   def new
     @post = Post.new
   end
 
-  # GET /posts/1/edit
-  def edit; end
+  def edit
+  end
 
-  # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = @user.posts.new(post_params)
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to user_post_path(@user, @post), success: 'post was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /posts/1 or /posts/1.json
   def update
     if @post.update(post_params)
-      redirect_to post_url(@post), notice: 'Post was successfully updated.'
+      redirect_to user_post_path(@user, @post), success: 'post was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
-    redirect_to posts_url, notice: 'Post was successfully destroyed.'
+    redirect_to root_path, success: 'post was successfully destroyed.'
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def post_params
-    params.fetch(:post, {})
+    params.require(:post).permit(:user_id, :title, :description, :status)
   end
 end
