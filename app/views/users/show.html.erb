@@ -13,7 +13,7 @@
       <%= link_to "Posts", user_posts_path(@user) %>
 
       <% if current_user == @user %>
-        <%= link_to "Refresh Credentials", edit_user_registration_path %>
+        <%= link_to "Edit Account", edit_user_registration_path %>
         <%= button_to "Deactivate Account", user_path(@user), method: :delete %>
       <% end %>
     </div>

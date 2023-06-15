@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show destroy] do
     resources :posts
   end
+
+  namespace :admin do
+    resources :contacts
+  end
 end
