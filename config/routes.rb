@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :contacts
+    resources :contact_messages, only: %i[index new create edit]
   end
 end

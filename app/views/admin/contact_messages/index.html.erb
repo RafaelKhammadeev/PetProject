@@ -1,0 +1,9 @@
+<h1>Support Contact</h1>
+<%= link_to "write message", new_admin_contact_message_path %>
+
+<div id="posts">
+    <% @contact_messages.each do |contact_message| %>
+        <h2><%= contact_message.title %></h2>
+        <h5><%= contact_message.message %></h5>
+    <% end %>
+</div>

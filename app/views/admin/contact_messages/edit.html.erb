@@ -1,0 +1,9 @@
+<h1>Editing Message</h1>
+
+<%= render "form", post: @post, user: @user %>
+
+<br>
+
+<div>
+  <%= link_to "Back to posts", user_posts_path(@user) %>
+</div>
