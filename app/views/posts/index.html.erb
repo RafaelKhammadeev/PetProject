@@ -1,7 +1,7 @@
 <h1>Posts</h1>
-<% if current_user.present? %>
-    <%= link_to "New post", new_user_post_path(current_user) %>
-<% end %>
+
+<%= link_to "Create Post", new_user_post_path(current_user), class: "btn btn-outline-primary btn-sm" %>
+
 
 <div id="posts">
   <table class="table">
@@ -10,17 +10,18 @@
       <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Description</th>
+      <th scope="col">Status</th>
     </tr>
     </thead>
     <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <th scope="row"><%= post.id %></th>
-          <td><%= link_to post.title, user_post_path(post.user_id, post) %></td>
-          <td><%= post.description %></td>
-          <td><%= post.status %></td>
-        </tr>
-      <% end %>
+    <% @posts.each do |post| %>
+      <tr>
+        <th scope="row"><%= post.id %></th>
+        <td><%= link_to post.title, user_post_path(post.user_id, post) %></td>
+        <td><%= post.description %></td>
+        <td><%= post.status %></td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

@@ -1,32 +1,34 @@
-<%= form_with model: post, url: [:user, :post] do |form| %>
-  <% if post.errors.any? %>
-    <div class="alert alert-danger">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+  <%= form_with model: post, url: [user, post] do |form| %>
+    <% if post.errors.any? %>
+      <div class="alert alert-danger">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-        <% post.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% post.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :title, class: "form-label" %><br />
+      <%= form.text_field :title, autofocus: true, autocomplete: "title", class:"form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description, class: "form-label" %><br />
+      <%= form.text_area :description, class:"form-control"  %>
+    </div>
+
+    <div class="field">
+      <%= form.label :status, class: "form-label" %><br />
+      <%= form.select :status, Post.status.values %>
+    </div>
+
+    <div>
+      <%= form.submit class: "btn btn-outline-primary btn-sm" %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %><br />
-    <%= form.text_field :title, autofocus: true, autocomplete: "title" %>
-  </div>
 
-  <div class="field">
-    <%= form.label :description %><br />
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %><br />
-    <%= form.select :status, Post.status.values %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
