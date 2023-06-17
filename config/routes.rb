@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get 'users_contact_messages', to: 'contact_messages#user_index'
     resources :contact_messages, only: %i[index new create edit]
   end
 end

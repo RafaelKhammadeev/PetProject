@@ -3,6 +3,10 @@ module Admin
     before_action :authenticate_user!
     before_action :set_contact_message, only: %i[edit update destroy]
 
+    def user_index
+      @contact_messages = current_user.contact_messages
+    end
+
     def index
       @contact_messages = Admin::ContactMessage.all
     end

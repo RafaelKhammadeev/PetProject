@@ -1,12 +1,11 @@
-<h1>Support Contact</h1>
+<h1>Contact Us</h1>
+<%= link_to "write message", new_admin_contact_message_path, class: "btn btn-outline-primary btn-sm" %>
 
 <div id="posts">
   <hr>
   <% @contact_messages.each do |contact_message| %>
     <h2><%= contact_message.title %></h2>
     <h5><%= contact_message.message %></h5>
-    <h6><%= contact_message.user.email %></h6>
-    <%= link_to "Reply", "#", class: "btn btn-outline-secondary btn-sm" %>
     <hr>
   <% end %>
 </div>
