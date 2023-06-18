@@ -3,12 +3,8 @@ module Admin
     before_action :authenticate_user!
     before_action :set_contact_message, only: %i[edit update destroy]
 
-    def user_index
-      @contact_messages = current_user.contact_messages
-    end
-
     def index
-      @contact_messages = Admin::ContactMessage.all
+      @contact_messages = current_user.contact_messages
     end
 
     def new
@@ -16,7 +12,7 @@ module Admin
     end
 
     def create
-      @contact_message = Admin::ContactMessage.new(contact_message_params)
+      @contact_message = current_user.contact_messages.new(contact_message_params)
       if @contact_message.save
         redirect_to admin_contact_messages_path, notice: 'Thank you for your message!'
       else

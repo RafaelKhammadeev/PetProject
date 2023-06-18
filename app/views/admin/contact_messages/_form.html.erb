@@ -1,28 +1,28 @@
-<%#= form_with model: admin_contact_messages do |form| %>
-  <%# if post.errors.any? %>
-<!--    <div class="alert alert-danger">-->
-<!--      <h2><%#= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>-->
+<%= form_with model: @contact_message, url: admin_contact_messages_path do |form| %>
+  <% if @contact_message.errors.any? %>
+    <div class="alert alert-danger">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-<!--      <ul>-->
-        <%# post.errors.each do |error| %>
-<!--          <li><%#= error.full_message %></li>-->
-        <%# end %>
-<!--      </ul>-->
-<!--    </div>-->
-  <%# end %>
+      <ul>
+        <% @contact_message.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<!--  <div class="field">-->
-<!--    <%#= form.label :title %><br />-->
-    <%#= form.text_field :title, autofocus: true, autocomplete: "title" %>
-<!--  </div>-->
+  <div class="field">
+    <%= form.label :title, class: "form-label"  %><br />
+    <%= form.text_field :title, autofocus: true, autocomplete: "title", class:"form-control" %>
+  </div>
 
-<!--  <div class="field">-->
-<!--    <%#= form.label :description %><br />-->
-    <%#= form.text_area :description %>
-<!--  </div>-->
+  <div class="field">
+    <%= form.label :message, class: "form-label"  %><br />
+    <%= form.text_area :message, class:"form-control" %>
+  </div>
 
 
-<!--  <div>-->
-    <%#= form.submit %>
-<!--  </div>-->
-<%# end %>
+  <div>
+    <%= form.submit class: "btn btn-outline-primary btn-sm" %>
+  </div>
+<% end %>

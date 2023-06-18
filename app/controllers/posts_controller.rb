@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_user
   before_action :set_post, only: %i[show edit update destroy]
-  # TODO: создать отедельно index main для index posts
   before_action :authenticate_user!, only: %i[new update index]
   before_action -> { authorize! @post }, only: %i[edit update destroy]
 
@@ -20,6 +19,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    binding.pry
     @post = @user.posts.new(post_params)
     if @post.save
       redirect_to user_post_path(@user, @post), success: 'post was successfully created.'
