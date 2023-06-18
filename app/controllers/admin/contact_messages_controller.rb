@@ -1,7 +1,7 @@
 module Admin
   class ContactMessagesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_contact_message, only: %i[edit update destroy]
+    before_action :set_contact_message, only: %i[edit update]
 
     def index
       @contact_messages = current_user.contact_messages
@@ -11,6 +11,9 @@ module Admin
       @contact_message = Admin::ContactMessage.new
     end
 
+    def edit
+    end
+
     def create
       @contact_message = current_user.contact_messages.new(contact_message_params)
       if @contact_message.save
@@ -18,9 +21,6 @@ module Admin
       else
         render :new
       end
-    end
-
-    def edit
     end
 
     def update
