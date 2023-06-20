@@ -12,6 +12,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'support/', to: 'pages#support'
-    resources :contact_messages, only: %i[index new create edit]
+    resources :contact_messages, only: %i[index new create edit destroy]
   end
 end

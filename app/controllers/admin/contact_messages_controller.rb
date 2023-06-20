@@ -1,7 +1,7 @@
 module Admin
   class ContactMessagesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_contact_message, only: %i[edit update]
+    before_action :set_contact_message, only: %i[edit update destroy]
 
     def index
       @contact_messages = current_user.contact_messages
@@ -25,10 +25,15 @@ module Admin
 
     def update
       if @contact_message.update(post_params)
-        redirect_to admin_contact_messages_path, success: 'post was successfully updated.'
+        redirect_to admin_contact_messages_path, success: 'Message was successfully updated.'
       else
         render :edit, status: :unprocessable_entity
       end
+    end
+
+    def destroy
+      @contact_message.destroy
+      redirect_to admin_contact_messages_path, success: 'Message was successfully destroyed.'
     end
 
     private
