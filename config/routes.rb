@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   root to: 'users#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
+
 
   get 'home/', to: 'pages#home'
 
@@ -12,6 +15,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'support/', to: 'pages#support'
-    resources :contact_messages, only: %i[index new create edit]
+    resources :contact_messages, only: %i[index new create edit update]
   end
 end

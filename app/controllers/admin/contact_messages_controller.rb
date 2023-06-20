@@ -14,6 +14,7 @@ module Admin
     def create
       @contact_message = current_user.contact_messages.new(contact_message_params)
       if @contact_message.save
+        ContactMessageMailer.new_contact_message(current_user, @contact_message).deliver_later
         redirect_to admin_contact_messages_path, notice: 'Thank you for your message!'
       else
         render :new

@@ -1,10 +1,10 @@
-<%= form_with model: @contact_message, url: admin_contact_messages_path do |form| %>
-  <% if @contact_message.errors.any? %>
+<%= form_with model: contact_message do |form| %>
+  <% if contact_message.errors.any? %>
     <div class="alert alert-danger">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(contact_message.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-        <% @contact_message.errors.each do |error| %>
+        <% contact_message.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
