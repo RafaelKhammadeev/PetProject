@@ -1,5 +1,5 @@
 <div class="text-center p-3">
   <%= link_to "Contact Us",
-              current_user.presence && current_user.admin  ? admin_support_path : admin_contact_messages_path,
+              current_user&.admin?  ? admin_support_path : admin_contact_messages_path,
               class: "text-dark" %>
 </div>
