@@ -1,10 +1,10 @@
-<%= form_with model: @contact_message, url: admin_contact_messages_path do |form| %>
-  <% if @contact_message.errors.any? %>
-    <div class="alert alert-danger">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_with model: feedback do |form| %>
+  <% if feedback.errors.any? %>
+    <div class="alert alert-warning">
+      <h2><%= pluralize(feedback.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-        <% @contact_message.errors.each do |error| %>
+        <% feedback.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -20,7 +20,6 @@
     <%= form.label :message, class: "form-label"  %><br />
     <%= form.text_area :message, class:"form-control" %>
   </div>
-
 
   <div>
     <%= form.submit class: "btn btn-outline-primary btn-sm" %>

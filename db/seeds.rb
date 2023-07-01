@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 User.destroy_all
 Post.destroy_all
-Admin::ContactMessage.destroy_all
+Feedback.destroy_all
 
 
 admin = User.create(email: "admin@admin.com", password: "123456", name: "Admin", surname: "Admin", admin: true)
@@ -18,5 +18,5 @@ test = User.create(email: "test@test.com", password: "123456", name: "Test", sur
 end
 
 3.times do |x|
-  Admin::ContactMessage.create(title: "Contact Title #{x}", message: "Contact Message #{x}", user: test)
+  Feedback.create(title: "Feedback Title #{x}", message: "Feedback Message #{x}", user: test)
 end
