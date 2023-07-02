@@ -4,8 +4,8 @@
   <hr>
   <% @feedbacks.each do |feedback| %>
     <h2><%= feedback.title %></h2>
-    <h5><%= feedback.message %></h5>
-    <h6><%= feedback.user.email %></h6>
+    <p class="fs-5"><%= feedback.message %></p>
+    <p class="fs-6"><%= feedback.user.email %></p>
     <hr>
   <% end %>
 </div>

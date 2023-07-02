@@ -11,7 +11,6 @@ module Users
     # POST /resource
     def create
       super
-      initialize_internals
     end
 
     # GET /resource/edit
@@ -22,7 +21,6 @@ module Users
     # PUT /resource
     def update
       super
-      initialize_internals
     end
 
     # DELETE /resource
