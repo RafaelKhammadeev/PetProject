@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  has_many :feedbacks, dependent: :destroy
 
-  validates :name, :surname, presence: true
+  enum :role, { user: 0, admin: 1 }
+
+  validates :name, :surname, presence: true, length: { minimum: 2, maximum: 50 }
 end

@@ -15,14 +15,16 @@
   </header>
 
   <body>
-    <% flash.each do |type, msg| %>
-      <div class="alert alert-<%= type %>">
-        <%= msg %>
-      </div>
-    <% end %>
+    <div class="container">
+        <% flash.each do |type, msg| %>
+          <div class="alert alert-<%= type %>">
+            <%= msg %>
+          </div>
+        <% end %>
 
 
-  <%= yield %>
+        <%= yield %>
+    </div>
   </body>
 
   <footer class="bg-light text-center text-lg-start">

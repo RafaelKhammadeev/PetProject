@@ -1,0 +1,5 @@
+<div class="text-center p-3">
+  <%= link_to "Contact Us",
+              current_user&.admin?  ? support_path : feedbacks_path,
+              class: "text-dark" %>
+</div>

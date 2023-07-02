@@ -1,0 +1,11 @@
+<h1>Support Contact</h1>
+
+<div id="posts">
+  <hr>
+  <% @feedbacks.each do |feedback| %>
+    <h2><%= feedback.title %></h2>
+    <h5><%= feedback.message %></h5>
+    <h6><%= feedback.user.email %></h6>
+    <hr>
+  <% end %>
+</div>
