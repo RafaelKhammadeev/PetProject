@@ -10,11 +10,11 @@ Post.destroy_all
 Feedback.destroy_all
 
 
-admin = User.create(email: "admin@admin.com", password: "123456", name: "Admin", surname: "Admin", admin: true)
+admin = User.create(email: "admin@admin.com", password: "123456", name: "Admin", surname: "Admin", role: 1)
 test = User.create(email: "test@test.com", password: "123456", name: "Test", surname: "Test")
 
 10.times do |x|
-  Post.create(title: "Title #{x}", description: "Description #{x}", status: "Public", user: admin)
+  Post.create(title: "Title #{x}", description: "Description #{x}", status: 1, user: admin)
 end
 
 3.times do |x|
