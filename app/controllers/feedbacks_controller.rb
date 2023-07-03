@@ -16,6 +16,7 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = current_user.feedbacks.new(feedback_params)
     if @feedback.save
+      FeedbackMailer.new_feedback(current_user, @feedback).deliver_later
       redirect_to feedbacks_path, notice: 'Thank you for your feedback!'
     else
       render :new, status: :unprocessable_entity
