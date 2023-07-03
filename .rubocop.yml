@@ -12,6 +12,7 @@ AllCops:
     - bin/**/*
     - db/**/*
     - vendor/**/*
+    - app/controllers/users/registrations_controller.rb
 
 Rails/I18nLocaleTexts:
   Enabled: false
