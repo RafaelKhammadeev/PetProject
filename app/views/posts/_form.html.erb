@@ -1,6 +1,6 @@
   <%= form_with model: post, url: [user, post] do |form| %>
     <% if post.errors.any? %>
-      <div class="alert alert-danger">
+      <div class="alert alert-warning">
         <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
         <ul>
@@ -23,7 +23,7 @@
 
     <div class="field">
       <%= form.label :status, class: "form-label" %><br />
-      <%= form.select :status, Post.status.values %>
+      <%= form.select :status, Post.statuses.keys %>
     </div>
 
     <div>

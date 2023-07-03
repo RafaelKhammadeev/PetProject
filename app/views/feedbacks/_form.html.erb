@@ -1,0 +1,27 @@
+<%= form_with model: feedback do |form| %>
+  <% if feedback.errors.any? %>
+    <div class="alert alert-warning">
+      <h2><%= pluralize(feedback.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% feedback.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, class: "form-label"  %><br />
+    <%= form.text_field :title, autofocus: true, autocomplete: "title", class:"form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :message, class: "form-label"  %><br />
+    <%= form.text_area :message, class:"form-control" %>
+  </div>
+
+  <div>
+    <%= form.submit class: "btn btn-outline-primary btn-sm" %>
+  </div>
+<% end %>

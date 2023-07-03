@@ -1,0 +1,13 @@
+<h1>Contact Us</h1>
+<%= link_to "write message", new_feedback_path, class: "btn btn-outline-primary btn-sm" %>
+
+<div id="posts">
+  <hr>
+  <% @feedbacks.each do |feedback| %>
+    <h2><%= feedback.title %></h2>
+    <p class="fs-5"><%= feedback.message %></p>
+    <%= link_to "Edit", edit_feedback_path(feedback), class: "btn btn-outline-secondary btn-sm" %>
+    <%= button_to "Destroy", feedback_path(feedback), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+    <hr>
+  <% end %>
+</div>

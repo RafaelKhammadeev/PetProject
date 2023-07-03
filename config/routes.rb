@@ -7,13 +7,11 @@ Rails.application.routes.draw do
   }
 
   get 'home/', to: 'pages#home'
+  get 'support/', to: 'pages#support'
 
   resources :users, only: %i[index show destroy] do
     resources :posts
   end
 
-  namespace :admin do
-    get 'support/', to: 'pages#support'
-    resources :contact_messages, only: %i[index new create edit update]
-  end
+  resources :feedbacks, except: %i[show]
 end

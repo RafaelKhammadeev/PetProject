@@ -32,10 +32,11 @@ gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 
-gem 'enumerize'
-
 # for get policy
 gem 'action_policy'
+
+# safety work with migrations
+gem 'strong_migrations'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

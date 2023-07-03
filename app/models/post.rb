@@ -1,9 +1,7 @@
 class Post < ApplicationRecord
-  extend Enumerize
-
   belongs_to :user
 
-  enumerize :status, in: %w[Draft Public]
+  enum :status, { draft: 0, public: 1 }, prefix: true
 
-  validates :title, presence: true, length: { minimum: 5, maximum: 100 }
+  validates :title, presence: true, length: { minimum: 2, maximum: 100 }
 end
