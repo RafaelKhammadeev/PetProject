@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get 'support/', to: 'pages#support'
 
   resources :users, only: %i[index show destroy] do
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
   end
 
   resources :feedbacks, except: %i[show]

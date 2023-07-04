@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_user
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :authenticate_user!, only: %i[new update index]
+  before_action :authenticate_user!, except: %i[show]
   before_action -> { authorize! @post }, only: %i[edit update destroy]
 
   def index
