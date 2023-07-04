@@ -1,29 +1,34 @@
-<div class="card weight">
-  <div class="card-body">
-    <h5 class="card-title">Title</h5>
-    <p class="card-text"><%= @post.title %></p>
+<div class="container">
+  <div class="card weight">
+    <div class="card-body">
+      <h5 class="card-title">Title</h5>
+      <p class="card-text"><%= @post.title %></p>
 
-    <h5 class="card-title">Description</h5>
-    <p class="card-text"><%= @post.description %></p>
+      <h5 class="card-title">Description</h5>
+      <p class="card-text"><%= @post.description %></p>
 
-    <h5 class="card-title">Status</h5>
-    <p class="card-text"><%= @post.status %></p>
+      <h5 class="card-title">Status</h5>
+      <p class="card-text"><%= @post.status %></p>
 
-    <div>
+      <div>
 
-      <% if current_user != @post.user %>
-        <%= link_to "Home", home_path, class: "btn btn-outline-primary btn-sm" %>
-      <% else %>
-        <%= link_to "My Posts", user_posts_path(@user), class: "btn btn-outline-primary btn-sm" %>
-        <%= link_to "Edit", edit_user_post_path(@user, @post), class: "btn btn-outline-secondary btn-sm" %>
+        <% if current_user != @post.user %>
+          <%= link_to "Home", home_path, class: "btn btn-outline-primary btn-sm" %>
+        <% else %>
+          <%= link_to "My Posts", user_posts_path(@user), class: "btn btn-outline-primary btn-sm" %>
+          <%= link_to "Edit", edit_user_post_path(@user, @post), class: "btn btn-outline-secondary btn-sm" %>
 
-        <hr>
-        <%= button_to "Destroy", user_post_path(@user, @post), method: :delete, class: "btn btn-outline-danger btn-sm" %>
-      <% end %>
+          <hr>
+          <%= button_to "Destroy", user_post_path(@user, @post), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+</div><br>
 
 <div class="container">
-  <%= render 'comments/form', user: @user, post: @post, comment: @comments %>
+  <%= render 'comments/form', user: @user, post: @post, comment: @post.comments.build %>
+  <% @comments.each do |comment| %>
+    <%= render 'comments/comment', user: @user, post: @post, comment: comment %>
+  <% end %>
 </div>

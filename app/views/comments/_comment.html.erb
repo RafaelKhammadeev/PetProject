@@ -1,0 +1,12 @@
+<div class="comment-<%= comment.id %> container card mt-4 p-3">
+  <%= comment.body %>
+  <hr/>
+  <%= comment.user.email %><br/>
+  <span>Posted <%= time_ago_in_words(comment.created_at) %>
+    <% if current_user == comment.user %>
+    <div class="button-group float-end">
+      <%= button_to "Delete", user_post_comment_path(user, post, comment), class: "btn btn-danger btn-sm", method: :delete %>
+    </div>
+  <% end %>
+  </span>
+</div>
