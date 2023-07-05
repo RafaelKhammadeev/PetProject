@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action -> { authorize! @post }, only: %i[edit update destroy]
 
   def index
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   def show

@@ -10,8 +10,10 @@
       <h5 class="card-title">Status</h5>
       <p class="card-text"><%= @post.status %></p>
 
-      <div>
+      <p><%= time_posted(@post) %></p>
+      <br>
 
+      <div>
         <% if current_user != @post.user %>
           <%= link_to "Home", home_path, class: "btn btn-outline-primary btn-sm" %>
         <% else %>

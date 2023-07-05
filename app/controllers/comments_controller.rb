@@ -1,14 +1,20 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_comment, only: %i[destroy]
-  before_action :set_post, only: %i[create destroy]
-  before_action :set_user, only: %i[create destroy]
+  before_action :set_comment, only: %i[update destroy]
 
   def create
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
       redirect_to user_post_path(@user, @post), notice: 'Comment was successfully created.'
+    else
+      render user_post_path(@user, @post), status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @comment.update(comment_params)
+      redirect_to user_post_path(@user, @post), notice: 'Comment was successfully updated.'
     else
       render user_post_path(@user, @post), status: :unprocessable_entity
     end
