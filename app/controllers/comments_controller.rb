@@ -1,8 +1,11 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user
+  before_action :set_post
   before_action :set_comment, only: %i[update destroy]
 
   def create
+
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
