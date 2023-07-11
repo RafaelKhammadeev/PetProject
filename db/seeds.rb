@@ -9,7 +9,6 @@ User.destroy_all
 Post.destroy_all
 Feedback.destroy_all
 
-
 admin = User.create(email: "admin@admin.com", password: "123456", name: "Admin", surname: "Admin", role: 1)
 test = User.create(email: "test@test.com", password: "123456", name: "Test", surname: "Test")
 
