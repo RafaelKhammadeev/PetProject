@@ -14,4 +14,14 @@ describe User do
       expect(build(:user, surname: '')).to_not be_valid
     end
   end
+
+  describe '#check role' do
+    it 'admin' do
+      expect(build(:user, :role_admin)).to be_admin
+    end
+
+    it 'user' do
+      expect(build(:user, :role_user)).to be_user
+    end
+  end
 end

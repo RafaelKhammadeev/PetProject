@@ -116,6 +116,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (3.2.1)
+      i18n (>= 1.8.11, < 2)
     ffi (1.16.3)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -334,6 +336,7 @@ DEPENDENCIES
   devise
   draper
   factory_bot_rails
+  faker
   importmap-rails
   jbuilder
   jsbundling-rails
