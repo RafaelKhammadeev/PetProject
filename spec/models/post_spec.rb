@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Post, type: :model do
+describe Post do
   it 'valid post' do
     expect(build(:post)).to be_valid
   end
