@@ -5,7 +5,7 @@ describe Post do
     expect(build(:post)).to be_valid
   end
 
-  describe '#invalid post' do
+  context "when invalid" do
     it 'without a title' do
       expect(build(:post, title: '')).to_not be_valid
     end
