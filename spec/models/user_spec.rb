@@ -4,31 +4,41 @@ describe User do
   let(:user) { build :user, name: name, surname: surname }
   let(:name) { "John" }
   let(:surname) { "Johns" }
-
-  it 'valid user' do
-    expect(build(:user)).to be_valid
-  end
+  let(:role) { "user" } 
 
   describe '#valid?' do
-    context "without name" do
-      let(:name) { nil }
-      it 'try to build user' do
-        expect(user.valid?).to_be falsey
-      end
-    end
-
-    it 'without a surname' do
-      expect(build(:user, surname: '')).to_not be_valid
+    it 'validates' do
+      expect(user.valid?).to be_truthy
     end
   end
 
-  describe '#check role' do
-    it 'admin' do
-      expect(build(:user, :role_admin)).to be_admin
-    end
+  context "wnen user has a nil name" do
+    let(:name) { nil }
 
+    it 'validates' do
+      expect(user).to_not be_valid
+    end
+  end
+
+  context "wnen user has a nil surname" do
+    let(:surname) { nil }
+
+    it 'validates' do
+      expect(user).to_not be_valid
+    end
+  end
+
+  context 'when user have admin role' do
+    let(:role) { "admin" }
+
+    it 'admin' do
+      expect(user).to be_admin
+    end
+  end
+
+  context 'when user have user role' do
     it 'user' do
-      expect(build(:user, :role_user)).to be_user
+      expect(user).to be_user
     end
   end
 end
