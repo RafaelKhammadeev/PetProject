@@ -7,15 +7,15 @@ describe User do
   let(:role) { "user" } 
 
   describe '#valid?' do
-    it 'validates' do
-      expect(user.valid?).to be_truthy
-    end
+    subject { user.valid? }
+
+    it { is_expected.to be_truthy }
   end
 
   context "wnen user has a nil name" do
     let(:name) { nil }
 
-    it 'validates' do
+    it 'validates' 
       expect(user).to_not be_valid
     end
   end
