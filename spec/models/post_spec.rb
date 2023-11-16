@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Post do
-  it 'post valid' do
+  it 'builds post' do
     expect(build(:post)).to be_valid
   end
 
