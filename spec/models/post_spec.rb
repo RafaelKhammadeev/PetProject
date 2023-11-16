@@ -19,5 +19,4 @@ describe Post do
     end
   end
 
-  it 'check user relation existence'
 end
