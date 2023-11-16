@@ -10,7 +10,7 @@ describe Feedback do
 
   context 'wnen feedback invalid' do
     it 'without a title' do
-      expect(create(:feedback, title: '')).to_not be_valid
+      expect(create(:feedback, title: '')).to be_invalid
     end
 
     it 'without a message' do
