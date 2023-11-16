@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Feedback do
-  build(:feedback)
 
 
   it 'feedback valid' do
