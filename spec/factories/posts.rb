@@ -5,7 +5,7 @@ FactoryBot.define do
     description { Faker::Books::Dune.quote }
 
     trait :status_public do
-      status { 'public' }
+      status { "public" }
     end
   end
 end

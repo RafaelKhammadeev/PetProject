@@ -1,19 +1,25 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Feedback do
+  let(:feedback) { build :feedback, title:, message: }
+  let(:title) { "Title" }
+  let(:message) { "Write some message" }
 
+  describe "#valid?" do
+    subject { feedback.valid? }
 
-  it 'feedback valid' do
-    expect(create(:feedback)).to be_valid
+    it { is_expected.to be_truthy }
   end
 
-  context 'wnen feedback invalid' do
-    it 'without a title' do
-      expect(create(:feedback, title: '')).to be_invalid
-    end
+  context "wnen feedback doesn't have title" do
+    let(:title) { nil }
 
-    it 'without a message' do
-      expect(create(:feedback, message: '')).to_not be_valid
-    end
+    it { expect(feedback).to be_invalid }
+  end
+
+  context "wnen feedback doesn't have message" do
+    let(:message) { nil }
+
+    it { expect(feedback).to be_invalid }
   end
 end

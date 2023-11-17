@@ -1,12 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe User do
-  let(:user) { build :user, name: name, surname: surname }
+  let(:user) { build :user, name:, surname: }
   let(:name) { "John" }
   let(:surname) { "Johns" }
-  let(:role) { "user" } 
+  let(:role) { "user" }
 
-  describe '#valid?' do
+  describe "#valid?" do
     subject { user.valid? }
 
     it { is_expected.to be_truthy }
@@ -15,30 +15,22 @@ describe User do
   context "wnen user has a nil name" do
     let(:name) { nil }
 
-    it 'validates' 
-      expect(user).to_not be_valid
-    end
+    it { expect(user).to be_invalid }
   end
 
   context "wnen user has a nil surname" do
     let(:surname) { nil }
 
-    it 'validates' do
-      expect(user).to_not be_valid
-    end
+    it { expect(user).to be_invalid }
   end
 
-  context 'when user have admin role' do
+  context "when user have admin role" do
     let(:role) { "admin" }
 
-    it 'admin' do
-      expect(user).to be_admin
-    end
+    it { expect(user).to be_admin }
   end
 
-  context 'when user have user role' do
-    it 'user' do
-      expect(user).to be_user
-    end
+  context "when user have user role" do
+    it { expect(user).to be_user }
   end
 end

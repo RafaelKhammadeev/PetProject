@@ -1,22 +1,31 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Post do
-  it 'builds post' do
-    expect(build(:post)).to be_valid
+  let(:post) { build :post, title:, description: }
+  let(:title) { "Title" }
+  let(:description) { "Description" }
+
+  describe "#valid?" do
+    subject { post.valid? }
+
+    it { is_expected.to be_truthy }
   end
 
-  context "when invalid" do
-    it 'without a title' do
-      expect(build(:post, title: '')).to_not be_valid
-    end
+  context "when post doesn't have title" do
+    let(:title) { nil }
 
-    it 'without a description' do
-      expect(build(:post, description: '')).to_not be_valid
-    end
-
-    it 'description is less than 10 characters' do
-      expect(build(:post, description: '5char')).to_not be_valid
-    end
+    it { expect(post).to be_invalid }
   end
 
+  context "when post doesn't have description" do
+    let(:description) { nil }
+
+    it { expect(post).to be_invalid }
+  end
+
+  context "when description is less than 10 characters" do
+    let(:description) { "5char" }
+
+    it { expect(post).to be_invalid }
+  end
 end
