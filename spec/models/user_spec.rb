@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe User do
-  let(:user) { build :user, name:, surname: }
+  let(:user) { build :user, name:, surname:, role:}
   let(:name) { "John" }
   let(:surname) { "Johns" }
   let(:role) { "user" }
