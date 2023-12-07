@@ -9,19 +9,21 @@ describe User do
   describe "#valid?" do
     subject { user.valid? }
 
-    it { is_expected.to be_truthy }
-  end
+    context "when valid user" do
+      it { is_expected.to be_truthy }
+    end
 
-  context "wnen user has a nil name" do
-    let(:name) { nil }
+    context "wnen user has a nil name" do
+      let(:name) { nil }
 
-    it { expect(user).to be_invalid }
-  end
+      it { is_expected.to be_falsey }
+    end
 
-  context "wnen user has a nil surname" do
-    let(:surname) { nil }
+    context "wnen user has a nil surname" do
+      let(:surname) { nil }
 
-    it { expect(user).to be_invalid }
+      it { is_expected.to be_falsey }
+    end
   end
 
   context "when user have admin role" do
