@@ -11,7 +11,7 @@ describe Feedback do
     it { is_expected.to be_truthy }
   end
 
-  context "wnen feedback doesn't have title" do
+  context "when feedback doesn't have title" do
     let(:title) { nil }
 
     it { expect(feedback).to be_invalid }
