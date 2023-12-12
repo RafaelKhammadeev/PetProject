@@ -16,7 +16,7 @@ describe Feedback do
       it { is_expected.to be_falsey }
     end
 
-    context "wnen feedback doesn't have message" do
+    context "when feedback doesn't have message" do
       let(:message) { nil }
 
       it { is_expected.to be_falsey }

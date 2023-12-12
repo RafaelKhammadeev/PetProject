@@ -13,13 +13,13 @@ describe User do
       it { is_expected.to be_truthy }
     end
 
-    context "wnen user has a nil name" do
+    context "when user has a nil name" do
       let(:name) { nil }
 
       it { is_expected.to be_falsey }
     end
 
-    context "wnen user has a nil surname" do
+    context "when user has a nil surname" do
       let(:surname) { nil }
 
       it { is_expected.to be_falsey }
