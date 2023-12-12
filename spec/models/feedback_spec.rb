@@ -21,5 +21,17 @@ describe Feedback do
 
       it { is_expected.to be_falsey }
     end
+
+    context "when title have more 100's symbols" do
+      let(:title) { Faker::Alphanumeric.alpha(number: 101) }
+
+      it { is_expected.to be_falsey }
+    end
+
+    context "when message have more 500's symbols" do
+      let(:message) { Faker::Alphanumeric.alpha(number: 501) }
+
+      it { is_expected.to be_falsey }
+    end
   end
 end
