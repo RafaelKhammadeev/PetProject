@@ -9,23 +9,23 @@ describe Post do
     subject { post.valid? }
 
     it { is_expected.to be_truthy }
-  end
 
-  context "when post doesn't have title" do
-    let(:title) { nil }
+    context "when post doesn't have title" do
+      let(:title) { nil }
 
-    it { expect(post).to be_invalid }
-  end
+      it { is_expected.to be_falsey }
+    end
 
-  context "when post doesn't have description" do
-    let(:description) { nil }
+    context "when post doesn't have description" do
+      let(:description) { nil }
 
-    it { expect(post).to be_invalid }
-  end
+      it { is_expected.to be_falsey }
+    end
 
-  context "when description is less than 10 characters" do
-    let(:description) { "5char" }
+    context "when description is less than 10 characters" do
+      let(:description) { "5char" }
 
-    it { expect(post).to be_invalid }
+      it { is_expected.to be_falsey }
+    end
   end
 end

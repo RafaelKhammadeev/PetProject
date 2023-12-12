@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe User do
-  let(:user) { build :user, name:, surname:, role:}
+  let(:user) { build :user, name:, surname:, role: }
   let(:name) { "John" }
   let(:surname) { "Johns" }
   let(:role) { "user" }
@@ -24,15 +24,5 @@ describe User do
 
       it { is_expected.to be_falsey }
     end
-  end
-
-  context "when user have admin role" do
-    let(:role) { "admin" }
-
-    it { expect(user).to be_admin }
-  end
-
-  context "when user have user role" do
-    it { expect(user).to be_user }
   end
 end

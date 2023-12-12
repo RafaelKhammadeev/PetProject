@@ -9,17 +9,17 @@ describe Feedback do
     subject { feedback.valid? }
 
     it { is_expected.to be_truthy }
-  end
 
-  context "when feedback doesn't have title" do
-    let(:title) { nil }
+    context "when feedback doesn't have title" do
+      let(:title) { nil }
 
-    it { expect(feedback).to be_invalid }
-  end
+      it { is_expected.to be_falsey }
+    end
 
-  context "wnen feedback doesn't have message" do
-    let(:message) { nil }
+    context "wnen feedback doesn't have message" do
+      let(:message) { nil }
 
-    it { expect(feedback).to be_invalid }
+      it { is_expected.to be_falsey }
+    end
   end
 end
