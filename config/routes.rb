@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   resources :feedbacks, only: %i[index new edit create update destroy]
 
   resources :posts do
-    resources :comments
+    resources :comments, only: %i[index create update destroy]
   end
 end

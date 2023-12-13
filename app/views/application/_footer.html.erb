@@ -1,5 +1,5 @@
 <div class="text-center p-3">
   <%= link_to "Contact Us",
-              current_user.role_admin?  ? support_path : feedbacks_path,
+              current_user&.role_admin?  ? support_path : feedbacks_path,
               class: "text-dark" %>
 </div>
