@@ -9,6 +9,7 @@ gem "bootsnap", require: false
 gem "cssbundling-rails"
 gem "devise"
 gem "draper"
+gem "enumerize"
 gem "faker"
 gem "importmap-rails"
 gem "jbuilder"
@@ -23,7 +24,6 @@ gem "sqlite3", "~> 1.4"
 gem "stimulus-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
-gem 'enumerize'
 
 group :development, :test do
   gem "factory_bot_rails"
