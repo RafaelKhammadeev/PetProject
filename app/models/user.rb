@@ -9,6 +9,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :nullify
   has_many :feedbacks, dependent: :destroy
 
   enumerize :role, in: ROLES, predicates: { prefix: true }

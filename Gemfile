@@ -23,6 +23,7 @@ gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
 gem "stimulus-rails"
 gem "turbo-rails"
+gem "seedbank"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
