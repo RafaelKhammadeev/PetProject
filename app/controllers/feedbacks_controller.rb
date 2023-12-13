@@ -17,7 +17,7 @@ class FeedbacksController < ApplicationController
     @feedback = current_user.feedbacks.new(feedback_params)
     if @feedback.save
       FeedbackMailer.new_feedback(current_user, @feedback).deliver_later
-      redirect_to feedbacks_path, notice: 'Thank you for your feedback!'
+      redirect_to feedbacks_path, notice: "Thank you for your feedback!"
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,7 +25,7 @@ class FeedbacksController < ApplicationController
 
   def update
     if @feedback.update(feedback_params)
-      redirect_to feedbacks_path, success: 'Feedback was successfully updated.'
+      redirect_to feedbacks_path, success: "Feedback was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class FeedbacksController < ApplicationController
 
   def destroy
     @feedback.destroy
-    redirect_to feedbacks_path, success: 'Feedback was successfully destroyed.'
+    redirect_to feedbacks_path, success: "Feedback was successfully destroyed."
   end
 
   private

@@ -24,6 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -31,3 +32,9 @@ jobs:
 
       - name: Run rubocop
         run: bin/rubocop
+
+      - name: Setup database
+        run: bin/rails db:create db:schema:load
+
+      - name: Run rspec
+        run: bin/rspec
