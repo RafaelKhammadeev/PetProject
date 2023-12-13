@@ -21,7 +21,6 @@ gem "sassc-rails"
 gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
 gem "stimulus-rails"
-gem "strong_migrations"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem 'enumerize'

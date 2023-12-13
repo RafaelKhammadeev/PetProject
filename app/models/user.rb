@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
 
-  enumerize :role, in: ROLES
+  enumerize :role, in: ROLES, predicates: { prefix: true }
 
   validates :name, :surname, presence: true, length: { minimum: 2, maximum: 50 }
 end
