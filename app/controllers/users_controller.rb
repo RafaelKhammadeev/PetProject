@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.all.excluding(current_user)
+    @users = User.excluding(current_user)
   end
 
   # GET /users/1 or /users/1.json
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root_path, success: 'User was successfully destroyed.'
+    redirect_to root_path, success: "User was successfully destroyed."
   end
 
   private

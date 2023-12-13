@@ -1,5 +1,5 @@
 class FeedbackMailer < ApplicationMailer
-  default to: -> { User.where(role: 'admin').pluck(:email) }
+  default to: -> { User.where(role: "admin").pluck(:email) }
 
   def new_feedback(user, feedback)
     @user = user
