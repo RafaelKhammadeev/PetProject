@@ -35,9 +35,6 @@ gem 'redis', '~> 4.0'
 # for get policy
 gem 'action_policy'
 
-# safety work with migrations
-gem 'strong_migrations'
-
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -73,6 +70,7 @@ gem 'draper'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+gem 'enumerize'
 
 group :development, :test do
   gem 'rubocop', require: false
