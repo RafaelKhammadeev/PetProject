@@ -1,6 +1,6 @@
 <h1>Posts</h1>
 
-<%= link_to "Create Post", new_user_post_path(current_user), class: "btn btn-outline-primary btn-sm" %>
+<%= link_to "Create Post", new_post_path, class: "btn btn-outline-primary btn-sm" %>
 
 
 <div id="posts">
@@ -17,7 +17,7 @@
     <% @posts.each do |post| %>
       <tr>
         <th scope="row"><%= post.id %></th>
-        <td><%= link_to post.title, user_post_path(post.user_id, post) %></td>
+        <td><%= link_to post.title, post_path(post) %></td>
         <td><%= post.description %></td>
         <td><%= post.status %></td>
       </tr>

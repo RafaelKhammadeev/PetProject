@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   get "home/", to: "pages#home"
   get "support/", to: "pages#support"
 
-  resources :users, only: %i[index show destroy] do
-    resources :posts
+  resources :users, only: %i[index show destroy]
+  resources :feedbacks, only: %i[index new edit create update destroy]
+
+  resources :posts do
+    resources :comments
   end
 
-  resources :feedbacks, except: %i[show]
+  get "/:page" => "pages#show", as: :pages
 end

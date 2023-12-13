@@ -8,7 +8,7 @@
     <p class="card-text"><%= @user.email %></p>
 
     <div>
-        <%= link_to "Posts", user_posts_path(@user), class: "btn btn-outline-primary btn-sm" %>
+        <%= link_to "Posts", posts_path, class: "btn btn-outline-primary btn-sm" %>
 
         <% if current_user == @user %>
           <%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-outline-secondary btn-sm" %>

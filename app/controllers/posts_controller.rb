@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
-  before_action :set_user
   before_action :set_post, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new update index]
   before_action -> { authorize! @post }, only: %i[edit update destroy]
 
   def index
-    @posts = @user.posts
+    @posts = current_user.posts
   end
 
   def show
@@ -19,9 +18,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = @user.posts.new(post_params)
+    @post = current_user.posts.new(post_params)
+
     if @post.save
-      redirect_to user_post_path(@user, @post), success: "post was successfully created."
+      redirect_to post_path(@post), success: "post was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to user_post_path(@user, @post), success: "post was successfully updated."
+      redirect_to post_path(@post), success: "post was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -46,11 +46,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def set_user
-    @user = User.find(params[:user_id])
-  end
-
   def post_params
-    params.require(:post).permit(:user_id, :title, :description, :status)
+    params.require(:post).permit(:title, :description, :status)
   end
 end
