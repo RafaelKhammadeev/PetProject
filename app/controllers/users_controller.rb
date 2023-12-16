@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
-  decorates_assigned :users
-  before_action :set_user, only: %i[show destroy]
 
-  # GET /users or /users.json
+  before_action :set_user, only: %i[show]
+  before_action :set_decorated_user, only: %i[show]
+
   def index
-    @users = User.excluding(current_user)
+    @decorated_users = User.excluding(current_user).decorate
   end
 
-  # GET /users/1 or /users/1.json
   def show
   end
 
@@ -18,13 +17,16 @@ class UsersController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
+  def set_decorated_user
+    @decorated_user = set_user.decorate
+  end
+
   def user_params
     params.require(:user).permit(:name, :surname)
   end
+
 end

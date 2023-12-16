@@ -2,10 +2,10 @@
 
 <table class="table">
   <tbody>
-  <% users.each do |user| %>
+  <% @decorated_users.each do |decorated_user| %>
     <tr>
-      <td><%= link_to user.full_name, user_path(user) %></td>
-      <td><%= user.email %></td>
+      <td><%= link_to decorated_user.full_name, user_path(decorated_user) %></td>
+      <td><%= decorated_user.email %></td>
     </tr>
   <% end %>
   </tbody>
