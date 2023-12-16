@@ -30,6 +30,8 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      HandleTestPostJob.perform_later(@post, current_user) if post_params[:status] == "test"
+
       redirect_to user_post_path(@user, @post), success: "post was successfully updated."
     else
       render :edit, status: :unprocessable_entity

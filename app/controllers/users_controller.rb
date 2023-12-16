@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :set_user, only: %i[show]
   before_action :set_decorated_user, only: %i[show]
 
@@ -28,5 +27,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :surname)
   end
-
 end
