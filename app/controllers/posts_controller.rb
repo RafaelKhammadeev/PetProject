@@ -19,6 +19,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    binding.pry
     @post = @user.posts.new(post_params)
 
     if @post.save
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      HandleTestPostJob.perform_later(@post, current_user) if post_params[:status] == "test"
+      10.times { HandleTestPostJob.perform_later(@post, @user) } if post_params[:status] == "test"
 
       redirect_to user_post_path(@user, @post), success: "post was successfully updated."
     else
