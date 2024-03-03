@@ -1,5 +1,5 @@
-class HandleTestPostJob < ActiveJob::Base
+class HandleTestPostJob < ApplicationJob
   def perform(post, user)
-    post.comments.create!(text: "comment #{rand(1..1000)}", user: user, post_id: post.id)
+    post.comments.create!(text: "comment #{rand(1..1000)}", user:, post_id: post.id)
   end
 end

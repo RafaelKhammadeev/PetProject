@@ -19,7 +19,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    binding.pry
     @post = @user.posts.new(post_params)
 
     if @post.save
