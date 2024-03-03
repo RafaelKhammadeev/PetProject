@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   def create
     @post = @user.posts.new(post_params)
+
     if @post.save
       redirect_to user_post_path(@user, @post), success: "post was successfully created."
     else
@@ -29,6 +30,8 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      10.times { HandleTestPostJob.perform_later(@post, @user) } if post_params[:status] == "test"
+
       redirect_to user_post_path(@user, @post), success: "post was successfully updated."
     else
       render :edit, status: :unprocessable_entity
@@ -42,12 +45,12 @@ class PostsController < ApplicationController
 
   private
 
-  def set_post
-    @post = Post.find(params[:id])
-  end
-
   def set_user
     @user = User.find(params[:user_id])
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
   def post_params

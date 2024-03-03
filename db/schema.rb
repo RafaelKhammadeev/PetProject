@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_01_162931) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_13_174029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.string "text", null: false
+    t.bigint "user_id"
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "feedbacks", force: :cascade do |t|
     t.string "title"
@@ -29,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_162931) do
     t.datetime "updated_at", null: false
     t.string "title", null: false
     t.integer "user_id"
-    t.integer "status", default: 0
+    t.string "status", default: "draft"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -43,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_01_162931) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "role", default: 0
+    t.string "role", default: "user"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

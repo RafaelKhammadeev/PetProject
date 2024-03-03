@@ -1,8 +1,12 @@
 class Post < ApplicationRecord
-  belongs_to :user
+  extend Enumerize
+  STATUS = %w[draft public test].freeze
 
-  enum :status, { draft: 0, public: 1 }, prefix: true
+  belongs_to :user
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true, length: { minimum: 2, maximum: 100 }
   validates :description, presence: true, length: { minimum: 10, maximum: 400 }
+
+  enumerize :status, in: STATUS, predicates: { prefix: true }
 end

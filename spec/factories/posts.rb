@@ -3,10 +3,10 @@ FactoryBot.define do
     user
     title { Faker::Books::Dune.title }
     description { Faker::Books::Dune.quote }
-    status { "draft" }
+    status { "public" }
 
-    trait :public do
-      status { "public" }
+    trait :draft do
+      status { "draft" }
     end
   end
 end
